@@ -45,16 +45,14 @@ public class PautaService {
     }
 
     public Boolean getPautaAberta(Long id){
-        Pauta pauta = this.repository.findById(id).orElseThrow(() -> {
-            throw new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA);
-        });
+        Pauta pauta = repository.findById(id)
+                .orElseThrow(() -> new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA));
         return pauta.getDataLimite().isAfter(LocalDateTime.now());
     }
 
     public String getResultadoVotacao(Long id){
-        List<Voto> votos = this.repository.findById(id).orElseThrow(() -> {
-            throw new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA);
-        }).getVotos();
+        List<Voto> votos = this.repository.findById(id).orElseThrow(() ->
+            new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA)).getVotos();
         List votosSim = verificarVotos(votos);
         return verificarQuantidadeVotos(votosSim, votos);
     }
