@@ -12,9 +12,9 @@ services:
       - "5432:5432" 
 
     environment:
-      - POSTGRES_DB=db5bkv653npghr
-      - POSTGRES_USER=nykmtldyvtlbbi
-      - POSTGRES_PASSWORD=bbd6386a37b0d087e8a054496ef0491f5b1b1ff31f105ef7d12367517bfd2852
+      - POSTGRES_DB=sicred
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - PGDATA=/var/lib/postgresql/data/pgdata
   rabbitmq:
     image: rabbitmq:management
