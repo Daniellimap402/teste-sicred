@@ -2,7 +2,12 @@
 version: '3'
 
 services:
-
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./webapp:/opt/webapp
   sicred:
     image: "postgres:latest"
     container_name: postgres
@@ -16,11 +21,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - PGDATA=/var/lib/postgresql/data/pgdata
-  rabbitmq:
-    image: rabbitmq:management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
 
 volumes:
   postgres-data: {}
