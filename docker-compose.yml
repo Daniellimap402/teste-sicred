@@ -5,16 +5,18 @@ services:
   web:
     build: .
     ports:
-      - "5000:5000"
-    volumes:
-      - ./webapp:/opt/webapp
+      - 5000:5000
+    links:
+      - sicred
   sicred:
     image: "postgres:latest"
     container_name: postgres
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    expose:
+      - 5432
     ports:
-      - "5432:5432" 
+      - 5432:5432
 
     environment:
       - POSTGRES_DB=sicred
