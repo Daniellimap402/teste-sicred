@@ -1,5 +1,6 @@
 package com.example.sicred.domain;
 
+import com.example.sicred.service.enumeration.StatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,13 +29,12 @@ public class Pauta implements Serializable {
     @Column(nullable = false, length = 100)
     private String titulo;
 
-    @Column(nullable = false)
-    private Long tempo;
-
     @Column(name = "data_limite", nullable = false)
     private LocalDateTime dataLimite;
 
     @OneToMany(mappedBy = "pauta", orphanRemoval = true)
     private List<Voto> votos = new ArrayList<>();
+
+    private StatusEnum status;
 
 }

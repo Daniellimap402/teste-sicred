@@ -27,7 +27,9 @@ public class AssociadoService {
     }
 
     public AssociadoDto getAssociado(Long id){
-        return this.mapper.toDto(this.repository.getById(id));
+        return this.mapper.toDto(this.repository.findById(id).orElseThrow(() -> {
+            throw new NegocioException(ConstantsUtil.ASSOCIADO_NAO_ENCONTRADO);
+        }));
     }
 
 }

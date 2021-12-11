@@ -1,4 +1,4 @@
-package com.example.sicred.builder;
+package com.example.sicred.web.rest.builder;
 
 import com.example.sicred.domain.Pauta;
 import com.example.sicred.repository.PautaRepository;

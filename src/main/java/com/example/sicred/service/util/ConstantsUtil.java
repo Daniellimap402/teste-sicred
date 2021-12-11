@@ -10,5 +10,7 @@ public class ConstantsUtil {
     public static final String CANDIDATO_JA_VOTOU = "Candidato já fez o seu voto";
     public static final String PAUTA_JA_FECHADA = "Pauta já esta fechada";
     public static final String ASSOCIADO_INCAPAZ_VOTAR = "Associado Incapaz de votar";
+    public static final String PAUTA_NAO_ENCONTRADA = "Pauta não encontrada";
+    public static final String ASSOCIADO_NAO_ENCONTRADO = "Associado não encontrado";
 
 }

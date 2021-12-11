@@ -4,9 +4,11 @@ import com.example.sicred.domain.Pauta;
 import com.example.sicred.domain.Voto;
 import com.example.sicred.repository.PautaRepository;
 import com.example.sicred.service.dto.PautaDto;
+import com.example.sicred.service.enumeration.StatusEnum;
 import com.example.sicred.service.enumeration.VotoEnum;
 import com.example.sicred.service.mapper.PautaMapper;
 import com.example.sicred.service.util.ConstantsUtil;
+import com.example.sicred.web.rest.exceptions.NegocioException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,19 +38,23 @@ public class PautaService {
     private void setTempoPauta(PautaDto dto, Pauta pauta) {
         if(Objects.isNull(dto.getTempo())){
             pauta.setDataLimite(LocalDateTime.now().plusMinutes(TEMPO_PADRAO));
-            pauta.setTempo(TEMPO_PADRAO);
             return;
         }
         pauta.setDataLimite(LocalDateTime.now().plusMinutes(dto.getTempo()));
+        pauta.setStatus(StatusEnum.A);
     }
 
     public Boolean getPautaAberta(Long id){
-        Pauta pauta = this.repository.getById(id);
+        Pauta pauta = this.repository.findById(id).orElseThrow(() -> {
+            throw new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA);
+        });
         return pauta.getDataLimite().isAfter(LocalDateTime.now());
     }
 
     public String getResultadoVotacao(Long id){
-        List<Voto> votos = this.repository.getById(id).getVotos();
+        List<Voto> votos = this.repository.findById(id).orElseThrow(() -> {
+            throw new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA);
+        }).getVotos();
         List votosSim = verificarVotos(votos);
         return verificarQuantidadeVotos(votosSim, votos);
     }
@@ -67,6 +73,14 @@ public class PautaService {
     private List<Voto> verificarVotos(List<Voto> votos) {
         return votos.stream()
                 .filter(voto -> VotoEnum.S.equals(voto.getVoto())).collect(Collectors.toList());
+    }
+
+    public List<Pauta> buscarPautasAbertas(){
+        return this.repository.getByStatus(StatusEnum.A);
+    }
+
+    public void saveAll(List<Pauta> pautas) {
+        this.repository.saveAll(pautas);
     }
 
 }

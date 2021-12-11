@@ -1,8 +1,8 @@
 package com.example.sicred.web.rest;
 
 import com.example.sicred.SicredApplication;
-import com.example.sicred.builder.PautaBuilder;
-import com.example.sicred.builder.VotoBuilder;
+import com.example.sicred.web.rest.builder.PautaBuilder;
+import com.example.sicred.web.rest.builder.VotoBuilder;
 import com.example.sicred.domain.Pauta;
 import com.example.sicred.service.dto.PautaDto;
 import com.example.sicred.test.TestConstantesUtil;

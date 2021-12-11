@@ -1,12 +1,11 @@
 package com.example.sicred.web.rest;
 
 import com.example.sicred.SicredApplication;
-import com.example.sicred.builder.VotoBuilder;
+import com.example.sicred.web.rest.builder.VotoBuilder;
 import com.example.sicred.service.dto.VotoDto;
 import com.example.sicred.service.enumeration.VotoAptoEnum;
 import com.example.sicred.service.feign.UserClient;
 import com.example.sicred.service.feign.dto.StatusDto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

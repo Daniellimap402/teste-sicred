@@ -1,7 +1,7 @@
 package com.example.sicred.web.rest;
 
 import com.example.sicred.SicredApplication;
-import com.example.sicred.builder.AssociadoBuilder;
+import com.example.sicred.web.rest.builder.AssociadoBuilder;
 import com.example.sicred.service.dto.AssociadoDto;
 
 import org.junit.jupiter.api.DisplayName;
