@@ -1,11 +1,17 @@
+server:
+    port:
+        5000
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/sicred
-        username: postgres
-        password: postgres
+        url: jdbc:postgresql://ec2-52-205-6-133.compute-1.amazonaws.com:5432/db5bkv653npghr
+        username: nykmtldyvtlbbi
+        password: bbd6386a37b0d087e8a054496ef0491f5b1b1ff31f105ef7d12367517bfd2852
 
     jpa:
         show-sql: true
         generate-ddl: true
         hibernate:
-            ddl-auto: create
+            ddl-auto: update
+
+    profiles:
+        active: ${PROFILE}

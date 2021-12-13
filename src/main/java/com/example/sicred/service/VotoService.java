@@ -43,7 +43,7 @@ public class VotoService {
     }
 
     private void verificarPautaAberta(VotoDto dto) {
-        if(!this.pautaService.getPautaAberta(dto.getIdPauta())){
+        if(!this.pautaService.buscarPautaAberta(dto.getIdPauta())){
             throw new NegocioException(ConstantsUtil.PAUTA_JA_FECHADA);
         }
     }

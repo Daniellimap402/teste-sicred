@@ -2,6 +2,7 @@ package com.example.sicred.service.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -17,7 +18,7 @@ public class AssociadoDto {
     private String nome;
 
     @NotBlank
-    @Size(max = 11, min = 11)
+    @CPF
     private String cpf;
 
 }

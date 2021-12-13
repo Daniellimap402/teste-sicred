@@ -44,17 +44,15 @@ public class PautaService {
         pauta.setStatus(StatusEnum.A);
     }
 
-    public Boolean getPautaAberta(Long id){
-        Pauta pauta = this.repository.findById(id).orElseThrow(() -> {
-            throw new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA);
-        });
+    public Boolean buscarPautaAberta(Long id){
+        Pauta pauta = repository.findById(id)
+                .orElseThrow(() -> new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA));
         return pauta.getDataLimite().isAfter(LocalDateTime.now());
     }
 
-    public String getResultadoVotacao(Long id){
-        List<Voto> votos = this.repository.findById(id).orElseThrow(() -> {
-            throw new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA);
-        }).getVotos();
+    public String buscarResultadoVotacao(Long id){
+        List<Voto> votos = this.repository.findById(id).orElseThrow(() ->
+            new NegocioException(ConstantsUtil.PAUTA_NAO_ENCONTRADA)).getVotos();
         List votosSim = verificarVotos(votos);
         return verificarQuantidadeVotos(votosSim, votos);
     }
@@ -73,14 +71,6 @@ public class PautaService {
     private List<Voto> verificarVotos(List<Voto> votos) {
         return votos.stream()
                 .filter(voto -> VotoEnum.S.equals(voto.getVoto())).collect(Collectors.toList());
-    }
-
-    public List<Pauta> buscarPautasAbertas(){
-        return this.repository.getByStatus(StatusEnum.A);
-    }
-
-    public void saveAll(List<Pauta> pautas) {
-        this.repository.saveAll(pautas);
     }
 
 }

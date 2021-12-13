@@ -27,7 +27,6 @@ public class PautaBuilder {
     public Pauta construir(){
         Pauta pauta = new Pauta();
         pauta.setTitulo(TestConstantesUtil.TITULO);
-        pauta.setTempo(TestConstantesUtil.TEMPO);
         pauta.setDataLimite(LocalDateTime.now().plusMinutes(TestConstantesUtil.TEMPO));
         return this.repository.save(pauta);
     }

@@ -53,7 +53,6 @@ public class VotoBuilder {
 
     private Pauta criarPautaFechada() {
         Pauta pauta = new Pauta();
-        pauta.setTempo(TestConstantesUtil.TEMPO);
         pauta.setDataLimite(LocalDateTime.now());
         pauta.setTitulo(TestConstantesUtil.TITULO);
         pauta = pautaBuilder.persistir(pauta);
