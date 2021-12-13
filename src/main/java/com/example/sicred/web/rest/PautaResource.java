@@ -28,9 +28,9 @@ public class PautaResource {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<String> getResultadoPauta(@PathVariable Long id){
+    public ResponseEntity<String> buscarResultadoPauta(@PathVariable Long id){
         log.debug("Requisição REST para obter o resultado de uma pauta: {}", id);
-        return new ResponseEntity<>(this.service.getResultadoVotacao(id), HttpStatus.OK);
+        return new ResponseEntity<>(this.service.buscarResultadoVotacao(id), HttpStatus.OK);
     }
 
 }
