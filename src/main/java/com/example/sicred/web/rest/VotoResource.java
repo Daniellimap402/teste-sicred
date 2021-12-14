@@ -21,7 +21,7 @@ public class VotoResource {
 
     @PostMapping
     public ResponseEntity<VotoDto> salvar(@RequestBody VotoDto dto){
-        log.debug("Requisição REST para salvar um Voto: {}", dto);
+        log.info("Requisição REST para salvar um Voto: {}", dto);
         return new ResponseEntity<>(this.service.salvar(dto), HttpStatus.CREATED);
     }
 }

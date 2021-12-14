@@ -21,7 +21,7 @@ public class AssociadoResource {
 
     @PostMapping()
     public ResponseEntity<AssociadoDto> salvar(@RequestBody AssociadoDto dto){
-        log.debug("Requisição REST para salvar um Associado: {}", dto);
+        log.info("Requisição REST para salvar um Associado: {}", dto);
         return new ResponseEntity<>(this.service.salvar(dto), HttpStatus.CREATED);
     }
 

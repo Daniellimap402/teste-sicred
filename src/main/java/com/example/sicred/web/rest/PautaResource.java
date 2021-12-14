@@ -23,13 +23,13 @@ public class PautaResource {
 
     @PostMapping
     public ResponseEntity<PautaDto> salvar(@RequestBody PautaDto dto){
-        log.debug("Requisição REST para salvar uma pauta: {}", dto);
+        log.info("Requisição REST para salvar uma pauta: {}", dto);
         return new ResponseEntity<>(this.service.salvar(dto), HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<String> buscarResultadoPauta(@PathVariable Long id){
-        log.debug("Requisição REST para obter o resultado de uma pauta: {}", id);
+        log.info("Requisição REST para obter o resultado de uma pauta: {}", id);
         return new ResponseEntity<>(this.service.buscarResultadoVotacao(id), HttpStatus.OK);
     }
 
