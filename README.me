@@ -1,0 +1,18 @@
+Para montar o ambiente do projeto é necessário:
+* Java 8
+* Docker
+* Maven
+
+Executar em ambiente local:
+    
+    executar o seguinte comando na pasta raiz do projeto:
+        mvn clean install -U
+    
+    subir os containers do docker utilizando o comando abaixo na pasta raiz do projeto
+        docker-compose -f docker-compose.yml up -d
+    
+    criar profile dev -> name: PROFILE, value: dev
+    
+    após executar a primeira vez modificar ddl-auto do application-dev.yml para update
+
+Swagger : https://teste-sicred.herokuapp.com/swagger-ui.html#/

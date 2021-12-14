@@ -1,13 +1,10 @@
 package com.example.sicred.service.dto;
 
-import com.example.sicred.domain.Voto;
-import com.example.sicred.service.enumeration.StatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Getter
 @Setter
@@ -20,9 +17,5 @@ public class PautaDto {
     private String titulo;
 
     private Long tempo;
-
-    private List<Voto> votos;
-
-    private StatusEnum status;
 
 }

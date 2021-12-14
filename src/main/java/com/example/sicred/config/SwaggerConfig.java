@@ -22,7 +22,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.example.sicred.web.rest"))
                 .paths(PathSelectors.any())
                 .build()
-                .useDefaultResponseMessages(false)
+                .useDefaultResponseMessages(true)
                 .apiInfo(apiInfo());
     }
 
